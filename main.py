@@ -1,9 +1,9 @@
 from PyQt6 import uic
 from PyQt6 import QtWidgets
-from Forms import main  # Это наш конвертированный файл дизайна
-from Forms import config  # Это наш конвертированный файл дизайна
-from Forms import message  # Это наш конвертированный файл дизайна
-from Forms import help  # Это наш конвертированный файл дизайна
+from Forms import main 
+from Forms import config 
+from Forms import message 
+from Forms import help 
 
 
 import sys
@@ -16,17 +16,16 @@ password_crypto_key = 'ZfkuhhiyKg4dAYiZgB6Z'
 
 
 
-#Функция получения полной даты
 def date_update_full():
     time_date = datetime.now()
     time_date = time_date.strftime("%d-%m-%Y %H:%M")
     return time_date
 
-#Функция записи логов
+
 def write_log(text_log):
     print(text_log)
     file_address = os.getcwd() + '\\log\\other.log'
-    # Подсчитаем количество строк в файле
+    
     with open(file_address, encoding="utf-8") as f:
         line_count = 0
         for line in f:
@@ -38,13 +37,13 @@ def write_log(text_log):
                 i += 1
             else:
                 os.renames(file_address, file_address + str(i))
-                # Запишем лог в файл
+                
                 f_log = open(file_address, 'a', encoding="utf-8")
                 f_log.write(str(date_update_full()) + ' || ' + text_log + '\n')
                 f_log.close()
                 i = 0
     else:
-        # Запишем лог в файл
+        
         f_log = open(file_address, 'a', encoding="utf-8")
         f_log.write(str(date_update_full()) + ' || ' + text_log + '\n')
         f_log.close()
@@ -52,7 +51,7 @@ def write_log(text_log):
 def check_license():
     return 0
 
-#Функция подключения через SSH
+
 def ssh_connect(host,user,secret,port,command_ex):
     client = paramiko.SSHClient()
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -64,7 +63,6 @@ def ssh_connect(host,user,secret,port,command_ex):
 
 class Window_main(QtWidgets.QMainWindow, main.Ui_MainWindow):
     def __init__(self):
-        # Это здесь нужно для доступа к переменным, методам
         # и т.д. в файле design.py
         super().__init__()
         self.setupUi(self)  # 
@@ -81,7 +79,6 @@ class Window_main(QtWidgets.QMainWindow, main.Ui_MainWindow):
 
     def wg_add_user(self):
         # ---------------------------------------
-        # Проверим лицензию
         if  check_license() == 1:
             self.Window_message = Window_message()
             self.Window_message.label.setText('Ошибка чтения файла с лицензией. Обратитесь к разработчику.')
