@@ -4,14 +4,14 @@ from Forms import main  # Это наш конвертированный фай�
 from Forms import config  # Это наш конвертированный файл дизайна
 from Forms import message  # Это наш конвертированный файл дизайна
 from Forms import help  # Это наш конвертированный файл дизайна
-#Конвертация формы ui в py .\Scripts\pyuic6.exe .\Forms\main.ui -o .\Forms\main.py
+
 
 import sys
 import os
 import paramiko
 import os
 from datetime import datetime
-import cryptocode #https://github.com/gdavid7/cryptocode
+import cryptocode
 password_crypto_key = 'ZfkuhhiyKg4dAYiZgB6Z'
 
 
@@ -67,7 +67,7 @@ class Window_main(QtWidgets.QMainWindow, main.Ui_MainWindow):
         # Это здесь нужно для доступа к переменным, методам
         # и т.д. в файле design.py
         super().__init__()
-        self.setupUi(self)  # Это нужно для инициализации нашего дизайна
+        self.setupUi(self)  # 
         self.pushButton.clicked.connect(self.exit)
         self.pushButton_2.clicked.connect(self.wg_add_user)
         self.pushButton_7.clicked.connect(self.goto_window_config)
@@ -565,7 +565,7 @@ class Window_config(QtWidgets.QMainWindow, config.Ui_MainWindow):
         # Это здесь нужно для доступа к переменным, методам
         # и т.д. в файле design.py
         super().__init__()
-        self.setupUi(self)  # Это нужно для инициализации нашего дизайна
+        self.setupUi(self)  # 
         self.pushButton.clicked.connect(self.goto_window_main)
         self.pushButton_2.clicked.connect(self.save_config_to_file)
 
@@ -686,7 +686,7 @@ class Window_message(QtWidgets.QMainWindow, message.Ui_MainWindow):
         # Это здесь нужно для доступа к переменным, методам
         # и т.д. в файле design.py
         super().__init__()
-        self.setupUi(self)  # Это нужно для инициализации нашего дизайна
+        self.setupUi(self)  # 
         self.pushButton.clicked.connect(self.ok)
 
     def ok (self):
@@ -697,7 +697,7 @@ class Window_help(QtWidgets.QMainWindow, help.Ui_MainWindow):
         # Это здесь нужно для доступа к переменным, методам
         # и т.д. в файле design.py
         super().__init__()
-        self.setupUi(self)  # Это нужно для инициализации нашего дизайна
+        self.setupUi(self)  # 
         self.pushButton_1.clicked.connect(self.close_window)
 
     def close_window(self):
